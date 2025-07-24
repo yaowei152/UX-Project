@@ -10,31 +10,116 @@
     </head>
     <body>
         <header>
-            <nav class="navbar">
+        <!-- Sticky Header Container -->
+        <div class="sticky-header">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                NANYANG | THE INNOVATIVE POLYTECHNIC
+            </div>
+            
+            <!-- Navigation Bar -->
+            <nav class="navbar" id="mainNavbar">
                 <div class="navdiv">
                     <div class="brand">
                         <a href="index.html">
-                            <img class="logo" src="images/NYP_Logo.jpg" alt="NYP">
+                            <!-- NYP Logo -->
+                            <img class="logo" src="images/NYP_Logo.jpg" alt="NYP Logo">
                         </a>
                     </div>
-                    <ul class="nav_links" style="list-style-position: inside;">
+                    <ul class="nav_links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="CCA.html">CCAs</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contactus.html">Contact Us</a></li>
-                        
                     </ul>
-                    <div class="search">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" placeholder="Search ..." />
-                    </div>
-                    <div class="profile">
-                        <a href="profile.html">
-                            <i class="fa-solid fa-user fa-2xl"></i>
-                        </a>
+                    <div class="nav-right">
+                        <div class="search">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search for information..." />
+                        </div>
+                        <div class="profile">
+                            <a href="profile.html">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </nav>
+        </div>
         </header>
+
+        
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About NYP Athletics</h3>
+                <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">Nanyang Polytechnic Athletics is dedicated to developing student-athletes through competitive sports and character building.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Teams</a></li>
+                    <li><a href="#">Training Programs</a></li>
+                    <li><a href="#">News & Updates</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 180 Ang Mo Kio Ave 8, Singapore 569830</li>
+                    <li><i class="fas fa-phone"></i> +65 6451 5115</li>
+                    <li><i class="fas fa-envelope"></i> athletics@nyp.edu.sg</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Nanyang Polytechnic Athletics. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button with Arrow Icon -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Add shadow effect when user scrolls down
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
     </body>
 </html>
