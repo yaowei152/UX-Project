@@ -1,0 +1,191 @@
+/* Custom styles for the signup page */
+.signup-container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 5;
+}
+
+.signup-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #002c9c;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.signup-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: #0066ff;
+    border-radius: 5px;
+}
+
+.signup-form .form-group {
+    margin-bottom: 25px;
+}
+
+/* Overriding the generic label style for this form */
+.signup-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.signup-form input,
+.signup-form textarea {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.signup-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 8px rgba(0, 102, 255, 0.3);
+    outline: none;
+}
+
+.signup-button {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #002c9c 0%, #0066ff 100%);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.signup-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 44, 156, 0.4);
+}
+
+/* --- STYLES FOR UNIFIED FILE UPLOAD BOX --- */
+#file-list-container {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.file-upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.file-upload-btn {
+    background: #0066ff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.file-upload-btn:hover {
+    background: #005ce6;
+}
+
+#file-list-header {
+    font-weight: 600;
+    color: #555;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#file-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#file-list li {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    gap: 10px;
+}
+
+#file-list li:last-child {
+    border-bottom: none;
+}
+
+.file-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.file-preview.image-thumbnail {
+    object-fit: cover;
+}
+
+.file-preview.file-icon {
+    font-size: 24px;
+    text-align: center;
+    line-height: 40px;
+    color: #777;
+    background-color: #e9ecef;
+}
+
+#file-list li > span {
+    flex-grow: 1;
+    word-break: break-all;
+}
+
+.remove-file-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.remove-file-btn:hover {
+    background: #c0392b;
+}

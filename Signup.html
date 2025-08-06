@@ -6,100 +6,7 @@
     <title>CCA Sign Up - NYP Athletics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/updatedmain.css">
-    <style>
-        /* Additional styles for signup page */
-        .signup-container {
-            max-width: 600px;
-            margin: 80px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            position: relative;
-            z-index: 5;
-        }
-        
-        .signup-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #002c9c;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .signup-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: #0066ff;
-            border-radius: 5px;
-        }
-        
-        .signup-form .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .signup-form label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
-        }
-        
-        .signup-form input,
-        .signup-form textarea {
-            width: 100%;
-            padding: 14px 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            font-family: inherit; /* Ensure textarea inherits font */
-        }
-
-        .signup-form textarea {
-            resize: vertical; /* Allow user to resize textarea vertically */
-            min-height: 120px;
-        }
-
-        .signup-form input[type="file"] {
-            padding: 10px;
-            background-color: #f9f9f9;
-            cursor: pointer;
-        }
-        
-        .signup-form input:focus,
-        .signup-form textarea:focus {
-            border-color: #0066ff;
-            box-shadow: 0 0 8px rgba(0, 102, 255, 0.3);
-            outline: none;
-        }
-        
-        .signup-button {
-            display: block;
-            width: 100%;
-            background: linear-gradient(135deg, #002c9c 0%, #0066ff 100%);
-            color: white;
-            padding: 16px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-        
-        .signup-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 44, 156, 0.4);
-        }
-    </style>
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
     <div class="background-logo">
@@ -151,14 +58,16 @@
                 
                 <div class="form-group">
                     <label for="adminNumber">School Admin Number</label>
-                    <input type="text" id="adminNumber" name="adminNumber" required>
+                    <input type="text" id="adminNumber" name="adminNumber" required
+                           pattern="[0-9]{6}[a-zA-Z]"
+                           title="Admin number must be 6 digits followed by a letter (e.g., 123456A).">
                 </div>
                 
                 <div class="form-group">
                     <label for="email">School Email</label>
                     <input type="email" id="email" name="email" required 
-                           pattern="[a-zA-Z0-9._%+-]+@nyp\.edu\.sg" 
-                           title="Please enter a valid NYP email address (e.g., yourname@nyp.edu.sg)">
+                           pattern="[0-9]{6}[a-zA-Z]@mymail\.nyp\.edu\.sg" 
+                           title="Please use your school email, which should match your admin number (e.g., 123456A@mymail.nyp.edu.sg).">
                 </div>
 
                 <div class="form-group">
@@ -167,10 +76,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="achievements">Upload Achievements (Optional)</label>
+                    <label>Upload Achievements (Optional)</label>
+                    
                     <input type="file" id="achievements" name="achievements" multiple 
-                           accept="image/*, .pdf, .doc, .docx">
-                    <small style="display: block; margin-top: 5px; color: #666;">You can upload multiple files (images, PDF, Word documents).</small>
+                           accept="image/*, .pdf, .doc, .docx" style="display: none;">
+                    
+                    <small style="display: block; margin-bottom: 10px; color: #666;">You can add multiple files using the button below.</small>
+
+                    <div id="file-list-container">
+                        <div class="file-upload-header">
+                            <label for="achievements" class="file-upload-btn">
+                                <i class="fas fa-paperclip"></i> Add File
+                            </label>
+                            <p id="file-list-header"></p>
+                        </div>
+                        <ul id="file-list"></ul>
+                    </div>
                 </div>
                 
                 <button type="submit" class="signup-button">Submit Application</button>
@@ -179,53 +100,124 @@
     </div>
 
     <footer class="footer">
-        </footer>
+    </footer>
     
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
 
     <script>
-        // Form submission logic
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const achievementFiles = document.getElementById('achievements').files;
+        let stagedFiles = [];
 
-            // Validate NYP email (client-side)
-            if (!email.endsWith('@nyp.edu.sg')) {
-                alert('Please use your NYP email address (@nyp.edu.sg)');
+        const signupForm = document.getElementById('signupForm');
+        const fileInput = document.getElementById('achievements');
+        const fileListDisplay = document.getElementById('file-list');
+        const fileListHeader = document.getElementById('file-list-header');
+
+        fileInput.addEventListener('change', (event) => {
+            Array.from(event.target.files).forEach(file => stagedFiles.push(file));
+            renderFileList();
+            event.target.value = '';
+        });
+
+        function renderFileList() {
+            fileListDisplay.innerHTML = '';
+            fileListHeader.textContent = `Selected files: ${stagedFiles.length}`;
+
+            if (stagedFiles.length === 0) {
+                const emptyItem = document.createElement('li');
+                emptyItem.textContent = 'No files chosen.';
+                emptyItem.style.color = '#888';
+                emptyItem.style.justifyContent = 'center';
+                fileListDisplay.appendChild(emptyItem);
                 return;
             }
+
+            stagedFiles.forEach((file, index) => {
+                const listItem = document.createElement('li');
+                let previewElement;
+
+                if (file.type.startsWith('image/')) {
+                    previewElement = document.createElement('img');
+                    previewElement.src = URL.createObjectURL(file);
+                    previewElement.classList.add('file-preview', 'image-thumbnail');
+                    previewElement.alt = `Preview of ${file.name}`;
+                } else {
+                    previewElement = document.createElement('div');
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-file-alt';
+                    previewElement.appendChild(icon);
+                    previewElement.classList.add('file-preview', 'file-icon');
+                }
+                listItem.appendChild(previewElement);
+
+                const fileName = document.createElement('span');
+                fileName.textContent = file.name;
+                listItem.appendChild(fileName);
+
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.type = 'button';
+                removeBtn.className = 'remove-file-btn';
+                removeBtn.onclick = () => {
+                    stagedFiles.splice(index, 1);
+                    renderFileList();
+                };
+                listItem.appendChild(removeBtn);
+
+                fileListDisplay.appendChild(listItem);
+            });
+        }
+
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // --- REAL IMPLEMENTATION NOTE ---
-            // In a real application, you would use the FormData API to send the
-            // form data, including the files, to a server.
-            // Example:
-            // const formData = new FormData(this);
-            // fetch('/submit-application', {
-            //     method: 'POST',
-            //     body: formData
-            // }).then(response => response.json())
-            //   .then(data => console.log(data))
-            //   .catch(error => console.error('Error:', error));
+            // --- UPDATED: VALIDATION LOGIC ---
+            const fullName = document.getElementById('fullName').value;
+            const adminNumberInput = document.getElementById('adminNumber');
+            const emailInput = document.getElementById('email');
+            const adminNumber = adminNumberInput.value.trim().toUpperCase();
+            const email = emailInput.value.trim();
             
-            // Simulate successful submission with an alert
-            alert(`Thank you, ${fullName}! Your application has been submitted. We will review it and contact you via ${email}.`);
+            const adminRegex = /^[0-9]{6}[A-Z]$/;
+
+            // 1. Validate Admin Number format
+            if (!adminRegex.test(adminNumber)) {
+                alert('Invalid Admin Number.\nPlease enter 6 digits followed by one letter (e.g., 123456A).');
+                return; // Stop the form submission
+            }
+
+            // 2. Validate Email format and ensure it matches the Admin Number
+            const expectedEmail = adminNumber + '@mymail.nyp.edu.sg';
+            if (email.toLowerCase() !== expectedEmail.toLowerCase()) {
+                alert(`Invalid School Email.\nYour email must match your admin number. It should be: ${expectedEmail}.`);
+                return; // Stop the form submission
+            }
+            // --- END VALIDATION ---
             
-            // Optional: Reset the form after submission
+            const formData = new FormData();
+            formData.append('fullName', fullName);
+            formData.append('email', email);
+            formData.append('adminNumber', document.getElementById('adminNumber').value);
+            formData.append('interest', document.getElementById('interest').value);
+            
+            stagedFiles.forEach(file => {
+                formData.append('achievements[]', file);
+            });
+
+            alert(`Thank you, ${fullName}! Your application with ${stagedFiles.length} file(s) has been submitted. We will contact you via ${email}.`);
+            
             this.reset();
+            stagedFiles = [];
+            renderFileList();
         });
+
+        renderFileList();
         
-        // Back to top functionality (same as before)
         document.getElementById('backToTop').addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         
-        // Navbar and Back-to-Top visibility on scroll (same as before)
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('mainNavbar');
             const backToTop = document.getElementById('backToTop');
