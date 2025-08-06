@@ -1,66 +1,38 @@
-/* Add this to the top of your CSS */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-}
-/* Background Logo - ensure proper z-index */
-.background-logo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.10;
-    z-index: -1; /* Keep behind everything */
-    width: 80%;
-    max-width: 800px;
-    height: auto;
-    pointer-events: none;
+/*
+  ========================================
+  CSS Variables (Custom Properties)
+  - Define colors and fonts here for easy theming.
+  ========================================
+*/
+:root {
+    --primary-color: #002c9c;
+    --accent-color: #0066ff;
+    --light-gray: #f5f7fa;
+    --medium-gray: #e4e8f0;
+    --dark-text: #333;
+    --light-text: #ccc;
+    --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Top Bar - keep styles but ensure it's part of sticky header */
-.top-bar {
-    background: #002c9c;
-    color: white;
-    padding: 8px 0;
-    text-align: center;
-    font-size: 0.9rem;
-    font-weight: 500;
-    position: relative;
-    z-index: 10; /* Ensure it stays above background */
-    width: 100%;
-}
-
-/* Navbar - keep existing styles */
-.navbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 100;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-/* ... rest of your CSS ... */
-
-/* Reset all margins and padding */
+/*
+  ========================================
+  General Resets & Body Styles
+  ========================================
+*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Fixed body height and flex layout */
 html, body {
     height: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-    color: #333;
+    font-family: var(--body-font);
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%);
+    color: var(--dark-text);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -68,11 +40,15 @@ body {
     overflow-x: hidden;
 }
 
-.main-content {
+main {
     flex: 1 0 auto;
 }
 
-/* Background Logo */
+/*
+  ========================================
+  Utility & Background
+  ========================================
+*/
 .background-logo {
     position: fixed;
     top: 50%;
@@ -92,54 +68,47 @@ body {
     display: block;
 }
 
-/* FIXED: Top Bar - removed padding and made flush */
-.top-bar {
-    background: #002c9c;
-    color: white;
-    padding: 8px 0;
-    text-align: center;
-    font-size: 0.9rem;
-    font-weight: 500;
-    position: relative;
-    z-index: 10;
-    width: 100%;
-}
-
-/* FIXED: Sticky Header Container - removed any gaps */
-.sticky-header {
+/*
+  ========================================
+  Header & Navigation
+  ========================================
+*/
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
 }
 
-/* FIXED: Navigation Bar - removed any side gaps */
+.top-bar {
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .navbar {
     background-color: #ffffff;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 100;
     transition: all 0.3s ease;
-    width: 100%; /* Ensure full width */
 }
 
 .navbar.scrolled {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* FIXED: Nav container - removed side padding */
 .navdiv {
     display: flex;
     align-items: center;
     height: 90px;
     max-width: 1400px;
     margin: 0 auto;
-    position: relative;
-    z-index: 10;
-    padding: 0; /* Remove any padding */
+    padding: 0 20px; /* Add some padding for smaller viewports */
 }
 
-.brand a .logo {
+.brand .logo {
     height: 60px;
     display: block;
 }
@@ -154,7 +123,7 @@ body {
 .nav_links a {
     text-decoration: none;
     color: #000000;
-    font-size: 18px;
+    font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
     transition: all 0.3s;
@@ -163,7 +132,7 @@ body {
 }
 
 .nav_links a:hover {
-    color: #002c9c;
+    color: var(--primary-color);
 }
 
 .nav_links a::after {
@@ -173,7 +142,7 @@ body {
     left: 0;
     width: 0;
     height: 3px;
-    background: #002c9c;
+    background: var(--primary-color);
     transition: width 0.3s;
 }
 
@@ -186,10 +155,8 @@ body {
     align-items: center;
     margin-left: auto;
     gap: 20px;
-    padding-right: 20px; /* Added right padding */
 }
 
-/* FIXED: Search box - adjusted width */
 .search {
     position: relative;
     background-color: #f2f2f2;
@@ -198,7 +165,7 @@ body {
     display: flex;
     align-items: center;
     height: 45px;
-    width: 250px; /* Reduced width */
+    width: 250px;
     transition: all 0.3s;
 }
 
@@ -212,12 +179,12 @@ body {
     outline: none;
     padding-left: 10px;
     width: 100%;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .search-icon {
     color: #888;
-    font-size: 18px;
+    font-size: 1.1rem;
 }
 
 .profile a {
@@ -234,34 +201,33 @@ body {
 }
 
 .profile a:hover {
-    background: #002c9c;
+    background: var(--primary-color);
     color: white;
 }
 
-/* Hero Section */
+
+/*
+  ========================================
+  Hero Section
+  ========================================
+*/
 .hero {
     max-width: 1400px;
     margin: 40px auto;
     padding: 0 30px;
     display: flex;
     gap: 40px;
-    position: relative;
-    z-index: 5;
+    align-items: center;
 }
 
 .hero-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
 }
 
 .hero-content h1 {
     font-size: 4.5rem;
     font-weight: 900;
-    color: #002c9c;
-    margin-bottom: 10px;
+    color: var(--primary-color);
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -270,7 +236,7 @@ body {
 .hero-content h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--dark-text);
     margin-bottom: 30px;
     position: relative;
     display: inline-block;
@@ -283,7 +249,7 @@ body {
     left: 0;
     width: 100px;
     height: 5px;
-    background: #0066ff;
+    background: var(--accent-color);
 }
 
 .hero-content p {
@@ -292,15 +258,11 @@ body {
     line-height: 1.7;
     margin-bottom: 40px;
     max-width: 600px;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
 }
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(135deg, #002c9c 0%, #0066ff 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     color: white;
     padding: 15px 40px;
     border-radius: 50px;
@@ -308,13 +270,8 @@ body {
     font-weight: 700;
     font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
     transition: all 0.3s;
     box-shadow: 0 5px 15px rgba(0, 44, 156, 0.3);
-    max-width: 200px;
-    text-align: center;
-    position: relative;
-    z-index: 10;
 }
 
 .cta-button:hover {
@@ -327,8 +284,6 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    position: relative;
-    z-index: 5;
 }
 
 .stat-card {
@@ -336,10 +291,6 @@ body {
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     transition: all 0.3s;
     backdrop-filter: blur(5px);
@@ -353,14 +304,14 @@ body {
 .stat-number {
     font-size: 3.5rem;
     font-weight: 800;
-    color: #002c9c;
+    color: var(--primary-color);
     margin-bottom: 10px;
 }
 
 .stat-label {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--dark-text);
 }
 
 .stat-sub {
@@ -369,14 +320,31 @@ body {
     margin-top: 10px;
 }
 
-/* Quote Section */
+/*
+  ========================================
+  Shared Section Styles
+  ========================================
+*/
+/* UPDATED: Changed style to match the desired simpler look */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-text); /* Changed from blue to dark gray/black */
+    margin-bottom: 40px; /* Adjusted margin */
+    text-transform: none; /* Removed uppercase styling */
+}
+
+/*
+  ========================================
+  Quote Section
+  ========================================
+*/
 .quote-section {
     max-width: 1400px;
-    margin: 80px auto 40px;
+    margin: 80px auto;
     padding: 0 30px;
     text-align: center;
-    position: relative;
-    z-index: 5;
 }
 
 .quote {
@@ -393,7 +361,6 @@ body {
 .quote-text {
     font-size: 1.8rem;
     font-weight: 500;
-    color: #333;
     font-style: italic;
     margin-bottom: 20px;
     line-height: 1.6;
@@ -402,7 +369,7 @@ body {
 .quote-author {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #002c9c;
+    color: var(--primary-color);
 }
 
 .quote-icon {
@@ -410,7 +377,7 @@ body {
     top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    background: #002c9c;
+    background: var(--primary-color);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -421,35 +388,15 @@ body {
     font-size: 1.5rem;
 }
 
-/* Training Section */
+/*
+  ========================================
+  Training Section
+  ========================================
+*/
 .training-section {
     max-width: 1400px;
-    margin: 40px auto;
+    margin: 80px auto;
     padding: 0 30px;
-    position: relative;
-    z-index: 5;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #002c9c;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 5px;
-    background: #0066ff;
-    border-radius: 5px;
 }
 
 .training-grid {
@@ -467,9 +414,10 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Background images with transparency */
 .training-card::before {
     content: '';
     position: absolute;
@@ -479,26 +427,19 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* Adjust transparency here */
+    opacity: 0.15;
     z-index: -1;
-    backdrop-filter: blur(5px);
+    transition: opacity 0.3s;
 }
 
-.training-card.throws::before {
-    background-image: url('../images/Throws.png');
+.training-card:hover::before {
+    opacity: 0.25;
 }
 
-.training-card.jumps::before {
-    background-image: url('../images/Jumps.png');
-}
-
-.training-card.distance::before {
-    background-image: url('../images/Distance.png');
-}
-
-.training-card.sprints::before {
-    background-image: url('../images/Sprints.png');
-}
+.training-card.throws::before { background-image: url('../images/Throws.png'); }
+.training-card.jumps::before { background-image: url('../images/Jumps.png'); }
+.training-card.distance::before { background-image: url('../images/Distance.png'); }
+.training-card.sprints::before { background-image: url('../images/Sprints.png'); }
 
 .training-card:hover {
     transform: translateY(-10px);
@@ -508,20 +449,16 @@ body {
 .training-title {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #002c9c;
+    color: var(--primary-color);
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
-    position: relative;
-    z-index: 2;
 }
 
 .training-detail {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2;
 }
 
 .training-label {
@@ -532,35 +469,106 @@ body {
 
 .training-value {
     font-size: 1.1rem;
-    color: #333;
 }
 
 .learn-more {
     display: block;
     text-align: center;
-    background: #002c9c;
+    background: var(--primary-color);
     color: white;
     padding: 12px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: auto; /* Pushes button to the bottom */
     transition: all 0.3s;
-    position: relative;
-    z-index: 2;
 }
 
 .learn-more:hover {
-    background: #0066ff;
+    background: var(--accent-color);
 }
 
-/* Footer */
+/*
+  ========================================
+  Testimonials Section
+  ========================================
+*/
+.testimonials-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 30px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 44, 156, 0.2);
+}
+
+/* Style for the new testimonial images */
+.testimonial-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Use these helper classes on your <img> tags to fine-tune the position */
+.testimonial-image.focal-point-top {
+    object-position: center top; /* Focuses on the very top of the image */
+}
+
+.testimonial-image.focal-point-bottom {
+    object-position: center bottom; /* Focuses on the bottom of the image */
+}
+
+.testimonial-image.focal-point-left {
+    object-position: left center; /* Focuses on the left side of the image */
+}
+
+/*
+  ========================================
+  Footer
+  ========================================
+*/
 .footer {
-    background: #002c9c;
+    background: var(--primary-color);
     color: white;
     padding: 50px 0 20px;
-    position: relative;
-    z-index: 10;
     flex-shrink: 0;
 }
 
@@ -587,7 +595,13 @@ body {
     left: 0;
     width: 50px;
     height: 3px;
-    background: #0066ff;
+    background: var(--accent-color);
+}
+
+.footer-column p {
+    color: var(--light-text);
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .footer-links {
@@ -599,9 +613,12 @@ body {
 }
 
 .footer-links a {
-    color: #ccc;
+    color: var(--light-text);
     text-decoration: none;
     transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .footer-links a:hover {
@@ -609,25 +626,20 @@ body {
     padding-left: 5px;
 }
 
-.footer-column p {
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
+/* Moved from inline styles */
 .social-icons {
     display: flex;
     gap: 15px;
     margin-top: 20px;
 }
 
-.social-icons a {
+.social-icon {
     color: white;
     font-size: 1.5rem;
     transition: transform 0.3s;
 }
 
-.social-icons a:hover {
+.social-icon:hover {
     transform: translateY(-5px);
 }
 
@@ -640,14 +652,18 @@ body {
     color: #aaa;
 }
 
-/* Back to Top Button */
+/*
+  ========================================
+  Back to Top Button
+  ========================================
+*/
 .back-to-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 60px;
     height: 60px;
-    background: #002c9c;
+    background: var(--primary-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -666,89 +682,31 @@ body {
 }
 
 .back-to-top:hover {
-    background: #0066ff;
+    background: var(--accent-color);
     transform: translateY(-5px);
 }
 
 .back-to-top i {
     color: white;
-    font-size: 24px;
-}
-
-/* Testimonials Section */
-.testimonials-section {
-    max-width: 1400px;
-    margin: 80px auto;
-    padding: 0 30px;
-    position: relative;
-    z-index: 5;
-}
-
-.testimonials-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #002c9c;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.testimonials-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 5px;
-    background: #0066ff;
-    border-radius: 5px;
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-}
-
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    text-align: center;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 44, 156, 0.2);
-}
-
-.testimonial-name {
     font-size: 1.5rem;
-    font-weight: 700;
-    color: #002c9c;
-    margin-bottom: 15px;
 }
 
-.testimonial-text {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    font-style: italic;
-}
-
-/* Responsive Design */
+/*
+  ========================================
+  Responsive Design
+  ========================================
+*/
 @media (max-width: 1024px) {
     .hero {
         flex-direction: column;
+        text-align: center;
     }
-    
+
+    .hero-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .training-grid,
     .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -764,80 +722,82 @@ body {
         flex-wrap: wrap;
         height: auto;
         padding: 20px;
+        justify-content: center;
     }
     
     .nav_links {
         width: 100%;
         justify-content: center;
         margin: 20px 0 15px;
+        order: 3; /* Push nav links below brand/right-nav */
     }
     
     .nav-right {
-        width: 100%;
-        justify-content: center;
-        padding-right: 0;
+        margin-left: 20px;
+    }
+
+    .brand {
+        flex-grow: 1;
     }
     
-    .search {
-        width: 100%;
-        max-width: 400px;
-    }
-    
-    .hero-content h1 {
-        font-size: 3.5rem;
-    }
-    
-    .hero-content h2 {
-        font-size: 2rem;
-    }
+    .hero-content h1 { font-size: 3.5rem; }
+    .hero-content h2 { font-size: 2rem; }
     
     .training-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
     }
     
-    /* Adjust back-to-top button for mobile */
     .back-to-top {
-        bottom: 20px;
-        right: 20px;
         width: 50px;
         height: 50px;
     }
     
     .back-to-top i {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 }
 
 @media (max-width: 480px) {
+    .navdiv {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+    }
+
     .nav_links {
         flex-direction: column;
         gap: 10px;
         align-items: center;
         margin-left: 0;
+        order: 0; /* Reset order */
+        width: auto;
+    }
+
+    .nav-right {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
     }
     
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-content h2 {
-        font-size: 1.8rem;
-    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content h2 { font-size: 1.8rem; }
     
     .hero-stats {
         grid-template-columns: 1fr;
     }
-    
-    .quote-text {
-        font-size: 1.4rem;
-    }
-    
+        
     .footer-content {
         grid-template-columns: 1fr;
+        text-align: center;
     }
-    
-    .background-logo {
-        width: 95%;
+
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-icons {
+        justify-content: center;
     }
 }
