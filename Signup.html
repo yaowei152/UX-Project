@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA Sign Up - NYP Athletics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/updatedmain.css">
+    <style>
+        /* Additional styles for signup page */
+        .signup-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 5;
+        }
+        
+        .signup-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #002c9c;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .signup-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: #0066ff;
+            border-radius: 5px;
+        }
+        
+        .signup-form .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .signup-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .signup-form input,
+        .signup-form textarea {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            font-family: inherit; /* Ensure textarea inherits font */
+        }
+
+        .signup-form textarea {
+            resize: vertical; /* Allow user to resize textarea vertically */
+            min-height: 120px;
+        }
+
+        .signup-form input[type="file"] {
+            padding: 10px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+        
+        .signup-form input:focus,
+        .signup-form textarea:focus {
+            border-color: #0066ff;
+            box-shadow: 0 0 8px rgba(0, 102, 255, 0.3);
+            outline: none;
+        }
+        
+        .signup-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #002c9c 0%, #0066ff 100%);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 44, 156, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-logo">
+        <img src="images/Athletics logo.png" alt="Athletics Logo" style="width:100%;height:auto;display:block;">
+    </div>
+    
+    <header>
+        <div class="sticky-header">
+            <div class="top-bar">
+                NANYANG | THE INNOVATIVE POLYTECHNIC
+            </div>
+            <nav class="navbar" id="mainNavbar">
+                <div class="navdiv">
+                    <div class="brand">
+                        <a href="Main.html">
+                            <img class="logo" src="images/NYP_Logo.jpg" alt="NYP Logo">
+                        </a>
+                    </div>
+                    <ul class="nav_links">
+                        <li><a href="Main.html">Home</a></li>
+                        <li><a href="CCA.html">CCAs</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                    <div class="nav-right">
+                        <div class="search">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search for information..." />
+                        </div>
+                        <div class="profile">
+                            <a href="profile.html">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="signup-container">
+            <h2 class="signup-title">CCA Application Form</h2>
+            <form class="signup-form" id="signupForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name (as per NRIC)</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adminNumber">School Admin Number</label>
+                    <input type="text" id="adminNumber" name="adminNumber" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">School Email</label>
+                    <input type="email" id="email" name="email" required 
+                           pattern="[a-zA-Z0-9._%+-]+@nyp\.edu\.sg" 
+                           title="Please enter a valid NYP email address (e.g., yourname@nyp.edu.sg)">
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">Why are you interested in joining this CCA?</label>
+                    <textarea id="interest" name="interest" required placeholder="Share your passion, experience, and what you hope to achieve..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="achievements">Upload Achievements (Optional)</label>
+                    <input type="file" id="achievements" name="achievements" multiple 
+                           accept="image/*, .pdf, .doc, .docx">
+                    <small style="display: block; margin-top: 5px; color: #666;">You can upload multiple files (images, PDF, Word documents).</small>
+                </div>
+                
+                <button type="submit" class="signup-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        </footer>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Form submission logic
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const achievementFiles = document.getElementById('achievements').files;
+
+            // Validate NYP email (client-side)
+            if (!email.endsWith('@nyp.edu.sg')) {
+                alert('Please use your NYP email address (@nyp.edu.sg)');
+                return;
+            }
+            
+            // --- REAL IMPLEMENTATION NOTE ---
+            // In a real application, you would use the FormData API to send the
+            // form data, including the files, to a server.
+            // Example:
+            // const formData = new FormData(this);
+            // fetch('/submit-application', {
+            //     method: 'POST',
+            //     body: formData
+            // }).then(response => response.json())
+            //   .then(data => console.log(data))
+            //   .catch(error => console.error('Error:', error));
+            
+            // Simulate successful submission with an alert
+            alert(`Thank you, ${fullName}! Your application has been submitted. We will review it and contact you via ${email}.`);
+            
+            // Optional: Reset the form after submission
+            this.reset();
+        });
+        
+        // Back to top functionality (same as before)
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Navbar and Back-to-Top visibility on scroll (same as before)
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
