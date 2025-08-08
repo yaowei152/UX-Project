@@ -282,3 +282,15 @@
 .close-modal-btn:hover {
     color: #888;
 }
+
+/* --- Map Styles --- */
+.map-wrapper {
+    margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden; /* Ensures the iframe inside respects the rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-wrapper iframe {
+    display: block; /* Removes any default bottom spacing on the iframe */
+}
