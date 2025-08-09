@@ -562,6 +562,153 @@ header {
 
 /*
   ========================================
+  Achievements Timeline Section
+  ========================================
+*/
+.timeline-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+/* The vertical line running down the center */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--medium-gray);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateY(50px); /* Start slightly lower for animation */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* This class is added by JavaScript when the item is in view */
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item-content, .timeline-item-image {
+    width: calc(50% - 40px); /* 50% width minus a gap */
+}
+
+/* The circle on the timeline */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 4px solid var(--primary-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 44, 156, 0.15);
+}
+
+/* Arrow pointing towards the timeline */
+.timeline-item-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+/* --- Logic for alternating sides --- */
+
+/* Left-aligned item (default) */
+.timeline-item:not(.timeline-item-right) .timeline-item-content {
+    order: 1; /* Text on the left */
+}
+.timeline-item:not(.timeline-item-right) .timeline-item-image {
+    order: 2; /* Image on the right */
+}
+.timeline-item:not(.timeline-item-right) .timeline-item-content::before {
+    right: -15px; /* Arrow on the right side of the content box */
+    border-left: 15px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Right-aligned item */
+.timeline-item.timeline-item-right .timeline-item-content {
+    order: 2; /* Text on the right */
+}
+.timeline-item.timeline-item-right .timeline-item-image {
+    order: 1; /* Image on the left */
+}
+.timeline-item.timeline-item-right .timeline-item-content::before {
+    left: -15px; /* Arrow on the left side of the content box */
+    border-right: 15px solid rgba(255, 255, 255, 0.9);
+}
+
+.timeline-date {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.timeline-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.timeline-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.timeline-item-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+
+/*
+  ========================================
   Footer
   ========================================
 */
@@ -717,6 +864,53 @@ header {
     }
 }
 
+@media (max-width: 992px) {
+    /* Responsive timeline for tablets */
+    .timeline::before {
+        left: 30px; /* Move line to the left */
+        transform: translateX(0);
+    }
+
+    .timeline-item {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start;
+    }
+
+    .timeline-item-content, .timeline-item-image {
+        width: 100%; /* Take full width */
+    }
+    
+    .timeline-item-content {
+        order: 2 !important; /* Ensure content is always second */
+        margin-left: 45px; /* Space from the line */
+    }
+    
+    .timeline-item-image {
+        order: 1 !important; /* Ensure image is always first */
+        margin-left: 45px;
+        margin-bottom: 20px;
+    }
+
+    /* Hide the image on right-aligned items to prevent visual clutter */
+    .timeline-item.timeline-item-right .timeline-item-image {
+       display: none;
+    }
+    
+    .timeline-item::after {
+        left: 30px; /* Align dot with the line */
+        transform: translateX(-50%);
+    }
+    
+    /* Always point arrow to the left */
+    .timeline-item-content::before {
+        left: -15px !important;
+        right: auto !important;
+        border-right: 15px solid rgba(255, 255, 255, 0.9) !important;
+        border-left: none !important;
+    }
+}
+
+
 @media (max-width: 768px) {
     .navdiv {
         flex-wrap: wrap;
@@ -755,6 +949,11 @@ header {
     
     .back-to-top i {
         font-size: 1.25rem;
+    }
+
+    /* On mobile, hide all images in the timeline for a cleaner look */
+    .timeline-item-image {
+        display: none !important;
     }
 }
 
@@ -800,4 +999,16 @@ header {
     .social-icons {
         justify-content: center;
     }
+
+    /* Further simplify timeline for small mobile */
+    .timeline::before {
+        left: 20px;
+    }
+    .timeline-item-content {
+        margin-left: 35px;
+    }
+    .timeline-item::after {
+        left: 20px;
+    }
 }
+
