@@ -8,7 +8,16 @@
   border: 0px solid silver;
 }
 
-
+:root{
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --accent:#2b6cb0;
+    --muted:#6b7280;
+    --stripe:#f3f6fb;
+    --radius:10px;
+    --pad:14px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
 
 img {
   width: 120px;
@@ -790,7 +799,102 @@ main {
   min-height: 20px;
 }
 
+  .wrap{
+    max-width:900px;
+    margin:0 auto;
+  }
 
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 6px 18px rgba(16,24,40,0.06);
+    padding:18px;
+    overflow:auto;
+  }
+
+  caption{
+    text-align:left;
+    font-weight:600;
+    padding-bottom:12px;
+    font-size:1.05rem;
+    color:var(--accent);
+  }
+
+  table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    min-width:560px; /* allows horizontal scroll on small screens */
+  }
+
+  thead th{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--muted);
+    padding:10px var(--pad);
+    border-bottom:1px solid #e6edf6;
+    letter-spacing:0.02em;
+    font-weight:600;
+    background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+  }
+
+  tbody td{
+    padding:12px var(--pad);
+    font-size:0.96rem;
+    vertical-align:middle;
+    border-bottom:1px solid #f1f5f9;
+  }
+
+  tbody tr:nth-child(even) td{
+    background:var(--stripe);
+  }
+
+  tbody tr:hover td{
+    background:rgba(43,108,176,0.05);
+  }
+
+  .role{
+    font-weight:600;
+    color:#0f172a;
+    width:220px;
+    white-space:nowrap;
+  }
+
+  .muted{
+    color:var(--muted);
+    font-size:0.92rem;
+  }
+
+  /* make phone/email wrap nicely on tiny screens */
+  .phone, .email {
+    word-break:break-word;
+  }
+
+  /* Responsive: stack cells into blocks on very small screens */
+  @media (max-width:520px){
+    table, thead, tbody, th, td, tr { display:block; }
+    thead { display:none; }
+    tbody tr {
+      margin-bottom:12px;
+      background:transparent;
+      border-radius:8px;
+      box-shadow:0 1px 0 rgba(16,24,40,0.02);
+      padding:10px;
+    }
+    tbody td {
+      display:flex;
+      justify-content:space-between;
+      padding:8px 10px;
+      border-bottom:1px solid rgba(16,24,40,0.04);
+    }
+    tbody td::before{
+      content: attr(data-label);
+      font-weight:600;
+      color:var(--muted);
+      margin-right:8px;
+    }
+    .role { width:auto; }
+  }
 
 
 .projectFactsWrap{
