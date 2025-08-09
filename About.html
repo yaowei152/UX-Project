@@ -3,18 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
   <title>hellcoding</title>
   <link rel="stylesheet" href="css/about.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="jQuerySimpleCounter.js"></script>
-  <script type="text/javascript" src="script.js"></script>
-  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.jqueryslidershock.com/wp-content/plugins/tsslider/js/boostrap.js"></script>
+  <script type="text/javascript" src="http://www.jqueryslidershock.com/wp-content/plugins/tsslider/js/wpts_slider_multiple.js"></script>
 
 </head>
 
@@ -26,7 +23,7 @@
       <div id="navbar" class="navbar">
 
         <div class="logo">
-          <img src="images/NYP_Logo-removebg-preview.png">
+          <img src="images/NYP_Logo.png">
         </div>
 
         <div class="navb">
@@ -56,15 +53,19 @@
   <main>
     <div class="slider-container">
       <div class="slider">
-
         <div class="slide slide-0 active">
           <div class="slide__bg">
           </div>
+          <div class="video_background">
+            <video autoplay loop muted>
+              <source src="videos\background_video.mp4" type="video/mp4">
+            </video>
           <div class="slide__content">
             <div class="slide__text">
               <h1 class="slide__text-heading">ABOUT US </h1>
               <p class="slide__text-desc">NYP Atheletics focuses on 4 different disciplines which includes, Sprints, Jumps, Distance, and Throws. Within these 4 disciplines, we hope to bring together atheletes who are passionate about the sport together.</p>
               <a href="#one"><button class="butt">Join Now!</button></a>
+            </div>
             </div>
           </div>
         </div>
@@ -78,10 +79,10 @@
       </div>
       <div>
         <h2>CHECK OUT<br> OUR DISCIPLINES</h2>
-        <a href="#Sprints"><p> | &nbsp SPRINTS</p></a>
-        <p> | &nbsp JUMPS</p>
-        <p> | &nbsp THROWS</p>
-        <p> | &nbsp DISTANCE</p>
+        <a href="#sprints"><p> | &nbsp SPRINTS</p></a>
+        <a href="#jumps"><p> | &nbsp JUMPS</p></a>
+        <a href="#distance"><p> | &nbsp DISTANCE</p></a>
+        <a href="#throws"><p> | &nbsp THROWS</p></a>
       </div> 
     </section>
 
@@ -93,8 +94,8 @@
     </section>
 
     <section>
-      <div></div>
-      <div>
+      <div><img src="images/Sprints_poster.jpg"></div>
+      <div class="sprints" id="sprints">
         <h3>Sprints</h3>
         <h5>Running short distances as fast as possible.</h5>
         <p>Competetive races where speed meets endurance, dash down the track in events such as 100m, 200m, 400m, and hurdles!</p>
@@ -103,24 +104,21 @@
     </section>
 
     <section>
-      <div>
+      <div></div>
+      <div class="jumps" id="jumps">
         <h3>Jumps</h3>
-        <h5>Achieve  the greatest height or distance.</h5>
+        <h5>Achieve the greatest height or distance.</h5>
         <p>It's a test for athleticism! Leap for height and distance in events like Long Jump, Triple Jump, High Jump, and Pole Vault!</p>
         <button>Learn More</button>
       </div>
-      <div></div>
+      <div><img src="images/Jumps_poster.jpg"></div>
     </section>
-
-
-
   </article>
 
   <article class="five">
-
     <section>
-      <div></div>
-      <div>
+      <div><img src="images/Distance_poster.jpg" loading="lazy"></div>
+      <div class="distance" id="distance">
         <h3>Distance</h3>
         <h5>Test of endurance on the track.</h5>
         <p>Be physically and mentally strong through distance running. Run distances from 800m to as long as 10,000m!</p>
@@ -129,215 +127,202 @@
     </section>
 
     <section>
-      <div>
+      <div></div>
+      <div class="throws" id="throws">
         <h3>Throws</h3>
-        <h5>Discus, Javelin and Shotput, throw as far as you can!</h5>
+        <h5>Throw as far as you can!</h5>
         <p>Where atheletes aim to throw an object as far as possible using Strength, Speed, Technique, and Coordination.</p>
         <button>Learn More</button>
       </div>
-      <div></div>
-    </section>
-
-    
+      <div><img src="images/Throws_poster.jpg"></div>
+    </section>  
 </article>
   
-    <section>
-      <div>
-        <div>
-          <h3>Beovision Harmony</h3>
-          <p>궁극적 경지의 몰입적인 오디오 비디오 체험을 위해 설계되었습니다. 새로운 Beovision Harmony 88"는 최신 8K OLED 화면 기술을 갖추고 있으며, 65" 및 77"는 4K 해상도를 지원합니다.</p>
-          <button>자세히 살펴보기</button>
-        </div>
-        <div>
-          <video autoplay muted loop class="myvideo">
-            <source src="https://videos.ctfassets.net/8cd2csgvqd3m/5zs6lMRJBYRq5A134CHUEq/cd2313e2c1c17d5d0dbe3035cb1538d5/B_O_H95_home_test.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </section>  
+</br></br></br></br></br>
 
   <article class="two">
     <section>
-      <h2>SPEAKERS</h2>
-      <p> Bang & Olufsen AR 앱을 다운로드하고 집안의 원하는 곳에 스피커를 놓아보세요.</p>
+      <h2>OUR GALLERY</h2>
       <h5> | </h5>
     </section>
 
     <section>
-      <div>
+      <div class="video">
+        <video autoplay muted loop>
+          <source src="videos\video1.mp4" type="video/mp4">
+        </video>
       </div>
+      <div class="right">
+        <div >
+          <h3>Our Athlethic Journey</h3>
+          <p>From Track to Triumph: Explore the Faces, Effort, and Energy Behind NYP Athletics.</p>
+        </div> 
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 5</div>
+            <img src="images\_DSC4773.jpg">
+          </div>
 
-      <div>
-        <div>
-          <h3>Beosound 2</h3>
-          <p>아름다운 모습만큼이나 매 비트마다 아름다운 사운드를 뿜어내는 강력한 멀티룸 스피커. 배치 위치나 사용 방법에 상관 없이 어떤 각도에서도 시선을 사로잡습니다..</p>
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 5</div>
+            <img src="images\_DSC4209.jpg">
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 5</div>
+            <img src="images/_DSC4620.jpg">
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">4 / 5</div>
+            <img src="images\_DSC4799.jpg">
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">5 / 5</div>
+            <img src="images\_DSC4814.jpg">
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
         </div>
+        </br>
+        </br>
         <div></div>
       </div>
     </section>
 
-    <section>
 
-      <div class="acco">
-        <ul>
-          <li>
-            <a class='show'>PORTABLE
-            <p class="sub">Bring beauty to the moment</p></a>
-            <div class="pimg">
-              <div>
-                <h4>방수 휴대용 블루투스 스피커</h4>
-                <h4>-</h4>
-                <p>어디로 가든, 누구를 만나든, 무엇을 할 계획이든 순간의 아름다움을 포착하세요. 업그레이드된 Beosound A1은 한 손에 들고 다닐 수 있는 음악 행복 주머니입니다. 주변 모든 사람과 몇 시간 동안 음악을 공유할 수 있도록 설계되었습니다.</p>
-              </div>
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/1ySxnI34HiTh6yK8y0OpsY/b2211eb1e5139cd2e49aa90d48cfd2a8/Beosound_a1_black_hero.png?q=85&fm=webp&w=720&h=720&fit=fill">
+  <div class="events-container">
+        <h1 class="events-header">UPCOMING EVENTS</h1>
+        <div class="events-underline"></div>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-image image1" style="background:url(https://clubzoom.org.sg/main/wp-content/uploads/2018/05/Kindred-Spirit-Series-Poster-2018-72-768x1086.jpg);background-size:cover"></div>
+                <div class="event-content">
+                    <span class="event-date">NOV 15, 2025</span>
+                    <h2 class="event-title">Kindred Spirit</h2>
+                    <p class="event-description">One of the biggest track meet. Compete against athletes from countries such as Malaysia, Russia, and Japan!</p>
+                </div>
             </div>
-          </li>
-          <li>
-            <a class='show'>MUITIROOM
-            <p class="sub">Beauty and passion to your music</p></a>
-            <div class="pimg">
-              <div>
-                <h4>혁신적인 무선 홈 스피커</h4>
-                <h4>-</h4>
-                <p>스칸디나비아풍 미니멀리즘에 뿌리를 둔 이 디자인적 심플함은 본질적으로 강력한 사운드와 극명한 대비를 이룹니다. 두 가지 구성 요소로 뚜렷하게 구분되는 Beosound Balance는 인테리어 오브제 형태의 고급스러운 디자인입니다. </p>
-              </div>
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/54re9IQ4soRmJxfcijWpPr/590d58d08fd2632b7314ea8bad71b787/Balance_her_natural_oak.png?q=90&fm=webp&w=720&h=720&fit=fill">
+            <div class="event-card">
+                <div class="event-image image2" style="background:url(https://tse4.mm.bing.net/th/id/OIP.EavCe8RW1IfxP3PXaUQZMgHaHa?cb=thfc1&rs=1&pid=ImgDetMain&o=7&rm=3);background-size:cover"></div>
+                <div class="event-content">
+                    <span class="event-date">NOV 25, 2025</span>
+                    <h2 class="event-title">POL-ITE Games</h2>
+                    <p class="event-description">Join our Athletics team as they compete against other Polytechnics and ITEs in this challenging competition.</p>
+                </div>
             </div>
-          </li>
-          <li>
-            <a class='show'>STEREO
-            <p class="sub">All sound. Enjoy silence. Celebrate originality.</p></a>
-            <div class="pimg">
-              <div>
-                <h4>사운드의 미래</h4>
-                <h4>-</h4>
-                <p>모든 청취 시나리오 하에서 상상을 초월하는 성능을 발휘하는 무선 라우드스피커를 만나보십시오. Bang & Olufsen의 특허 기술로 완성된 탁월한 음악과 영화 사운드 성능을 느껴볼 준비를 하십시오.</p>
-              </div>
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/60OIJAMXb2OKfzXqnMIREF/a4b71730a7bbf482f262bcdccde84952/beolab-19-natural-hero.png?q=90&fm=webp&w=720&h=720&fit=fill">
+            <div class="event-card">
+                <div class="event-image image3" style="background:url(https://th.bing.com/th/id/R.06652652e16f960c597ca8a4d6686085?rik=FwRmoQ63CN3Snw&riu=http%3a%2f%2fs1.bwallpapers.com%2fwallpapers%2f2014%2f05%2f29%2fmalaysia-flag_12133332.jpg&ehk=4YVAdcu10j0PIwDUG4yGkt0Gspdy26FuNdSCDZFNlvk%3d&risl=&pid=ImgRaw&r=0);background-size:cover"></div>
+                <div class="event-content">
+                    <span class="event-date">DEC 12, 2025</span>
+                    <h2 class="event-title">Overseas Training - Malaysia</h2>
+                    <p class="event-description">Opportunity to go on a 4 days trip to train with the Malaysian Sport School team!</p>
+                </div>
             </div>
-          </li>
-          <li>
-            <a class='show'>ARCHITECTURAL
-            <p class="sub">Modular, Wall Mounted Speaker System</p></a>
-            <div class="pimg">
-              <div>
-                <h4>즉흥적인 음악</h4>
-                <h4>-</h4>
-                <p>Beosound Shape는 디자인을 중시하는 음악 애호가를 위한 모듈형 스피커 시스템입니다. 마치 독특한 예술 작품처럼 벽에 거치되는 이 스피커는 몰입적인 사운드를 선사하는 동시에 기본 내장된 노이즈 댐퍼를 이용해 실내의 음향 특성을 개선해줍니다.</p>
-              </div>
-              <img src="https://images.ctfassets.net/8cd2csgvqd3m/4fPtynvUplfKqB4wHokXzl/d704846f015117a8df0892be4559f610/shape-product-img.png?q=90&fm=webp&w=720&h=720&fit=fill">
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
+        </div>
+    </div>
+
+   <section>
+  <div class="acco">
+    <h1>FAQ</h1>
+    <ul>
+      <li>
+        <a class='show'>Q1: What disciplines are offered in NYP Athletics?</a>
+        <div class="pimg">
+          <div>
+            <p>NYP Athletics offers four main disciplines:</p>
+            <p>- Sprints: 100m, 200m, 400m, hurdles</p>
+            <p>- Jumps: Long Jump, Triple Jump, High Jump, Pole Vault</p>
+            <p>- Distance: 800m to 10,000m races</p>
+            <p>- Throws: Discus, Javelin, Shotput</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a class='show'>Q2: When and where are training sessions held?</a>
+        <div class="pimg">
+          <div>
+            <p>Training schedules vary by discipline. Most sessions are held at the NYP track or nearby sports facilities. You'll receive a detailed schedule upon joining.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a class='show'>Q3: Who can join NYP Athletics?</a>
+        <div class="pimg">
+          <div>
+            <p>Any NYP student with a passion for athletics is welcome! Whether you're a seasoned athlete or just starting out, there's a place for you.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a class='show'>Q4: How do I sign up for the CCA?</a>
+        <div class="pimg">
+          <div>
+            <p>You can sign up through the NYP CCA portal or contact the Athletics team directly at athletics@nyp.edu.sg.</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
   </article>
 
 
+  <!-- Footer Section -->
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>About NYP Athletics</h3>
+      <div class="underline"></div>
+      <p>
+        Nanyang Polytechnic Athletics is dedicated to developing student-athletes 
+        through competitive disciplines and character building.
+      </p>
+    </div>
 
-  <article class="four">
-    <section>
-      <h2>PRODUCTS</h2>
-      <p> 제품에 대해 더 자세히 알아보세요.</p>
-      <h5> | </h5>
-    </section>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <div class="underline"></div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Teams</a></li>
+        <li><a href="#">Training Programs</a></li>
+        <li><a href="#">News & Updates</a></li>
+      </ul>
+    </div>
 
-    <section>
-      <div>
-        <img src="https://images.ctfassets.net/8cd2csgvqd3m/4Bk2HuTf4E6JTBPuFyzl2U/18a9b7c55fc4cee2f93fd26a38a97a2c/beolab50-icon.svg">
-        <h5>SPEAKERS FOR TELEVISION</h5>
-        <p>Explore the speakers made to give you the full cinematic experience</p>
-        <button>TV 스피커 ➙</button>
-      </div>
-        
-      <div>
-        <img src="https://images.ctfassets.net/8cd2csgvqd3m/3BawSGRFfschgR8mJ8iu56/ab1394e3741fb7bd5778011b46e3766a/harmony-icon.svg">
-        <h5>TELEVISION CATEGORY</h5>
-        <p>Explore the full range of televisions and learn more about their features</p>
-        <button>TV 보기 ➙</button>
-      </div>
-        
-      <div>
-        <img src="https://images.ctfassets.net/8cd2csgvqd3m/7kHW4EpbZLmi29kzRhE0cB/c9b40a29a7e423af74e3d013f4fc2ade/Beoremote_One_icon.svg">
-        <h5>BEOREMOTE ONE</h5>
-        <p>Learn more about the handy controller for your entire Bang & Olufsen setup</p>
-        <button>리모컨 스피커 ➙</button>
-      </div>
-    </section>
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <div class="underline"></div>
+      <p><i class="fas fa-map-marker-alt"></i> 180 Ang Mo Kio Ave 8, Singapore 569830</p>
+      <p><i class="fas fa-phone"></i> +65 6451 5115</p>
+      <p><i class="fas fa-envelope"></i> athletics@nyp.edu.sg</p>
+    </div>
 
-  </article>
+    <div class="footer-column">
+      <h3>Follow Us</h3>
+      <div class="underline"></div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2023 Nanyang Polytechnic Athletics. All Rights Reserved.</p>
+  </div>
+</footer>
+
     
-    <div class="icon">
-      <i class="fa fa-facebook"></i>
-      <i class="fa fa-twitter"></i>
-      <i class="fa fa-pinterest"></i>
-      <i class="fa fa-envelope"></i>
-    </div>
-
-  <footer>
-    <div>
-      <section>
-        <h5>CUSTOMER CARE</h5>
-        <p>Login/Register</p>
-        <p>Customer support</p>
-        <p>Find store</p>
-        <p>Contact us</p>
-        <p>Shipping</p>
-      </section>
-
-      <section>
-        <h5>OUR POLICIES</h5>
-        <p>Privacy Policy</p>
-        <p>Cookie Policy</p>
-        <p>Accessibility</p>
-        <p>Policies and terms</p>
-      </section>
-
-      <section>
-        <h5>OUR COMPANY</h5>
-        <p>Become a Retailer</p>
-        <p>Press</p>
-        <p>Corporate</p>
-        <p>Investors</p>
-        <p>Careers</p>
-      </section>
-
-      <section>
-        <h5>INSTAGRAM FEED</h5>
-        <img
-          src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-0/p206x206/119510526_10157160648041607_4953543228230659749_o.jpg?_nc_cat=103&_nc_sid=730e14&_nc_ohc=S9UnrZrnwAkAX861WjQ&_nc_ht=scontent-ssn1-1.xx&tp=6&oh=099099630fe5e5c933dd97edeca4405f&oe=5F876ED9">
-        <img
-          src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-0/c0.23.206.206a/p206x206/118943335_10157146613441607_7095393433910532043_o.jpg?_nc_cat=111&_nc_sid=730e14&_nc_ohc=2kmKnLQ1eCwAX9IYEXW&_nc_ht=scontent-ssn1-1.xx&oh=af9da71d2b45d46a07993591a7c23979&oe=5F86BE57">
-        <img
-          src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-0/c0.23.206.206a/p206x206/119049421_10157146613266607_2369031249965019159_o.jpg?_nc_cat=108&_nc_sid=730e14&_nc_ohc=sFbPFSp8rh0AX_6JE1q&_nc_ht=scontent-ssn1-1.xx&oh=3d0c22d0c6a2edecf58fa6407e40f3f9&oe=5F8777E2"><br>
-        <img
-          src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-0/c0.23.206.206a/p206x206/118865619_10157145027886607_3269121367816326629_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=jWBuo0X7dJAAX9fL_Dh&_nc_ht=scontent-ssn1-1.xx&oh=8ce91a982401d01fd2d3e28c9d0246e9&oe=5F84CD11">
-        <img
-          src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-0/c0.23.206.206a/p206x206/118865619_10157145027881607_6432647069459652814_o.jpg?_nc_cat=100&_nc_sid=730e14&_nc_ohc=yCNM4-AFEAkAX8G-knm&_nc_ht=scontent-ssn1-1.xx&oh=96369ce1ab0e94a2a4cc1e3e01fe328c&oe=5F86BF50">
-        <img
-          src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-0/c0.23.206.206a/p206x206/119041512_10157145027866607_3259146742627100503_o.jpg?_nc_cat=104&_nc_sid=730e14&_nc_ohc=5rVb1EOHyJAAX8Pmw2S&_nc_ht=scontent-ssn1-1.xx&oh=280662ac71eb57a14495c868d513ed3c&oe=5F84645A">
-
-      </section>
-    </div>
-
-    <div>
-      <div>
-        <img src="https://images.ctfassets.net/8cd2csgvqd3m/4JdKzu629zMIigR4O0AUGW/60ca2254d3cf4ed943ead8a12b947f8f/primary-logo-white.svg">
-      </div>
-      <div>
-        <p>Facebook</p>
-        <p>Instagram</p>
-        <p>Twitter</p>
-        <p>Youtube</p>
-      </div>
-    </div>
-  </footer>
-
-
-
-
-
-
+    
   
 
   <script>
@@ -449,12 +434,40 @@ $(document).ready(function() {
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     if (scroll > 1) {
-      $(".navbar").css("background", "#D3D3D3");
+      $(".navbar").css("background", "#000");
     } else {
       $(".navbar").css("background", "none");
     }
   })
 })
+
+//slideshow
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
 
   </script>
 
