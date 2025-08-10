@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/feedback.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>CCA Feedback Form</title>
+</head>
+<body>
+    <div class="background-logo">
+        <img src="images/Athletics logo.png" alt="Athletics Logo">
+    </div>
+
+    <header>
+        <div class="sticky-header">
+            <div class="top-bar">
+                NANYANG | THE INNOVATIVE POLYTECHNIC
+            </div>
+            
+            <nav class="navbar" id="mainNavbar">
+                <div class="navdiv">
+                    <div class="brand">
+                        <a href="Main.html">
+                            <img class="logo" src="images/NYP_Logo-removebg-preview.png" alt="NYP Logo">
+                        </a>
+                    </div>
+                    <ul class="nav_links">
+                        <li><a href="Main.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                    <div class="nav-right">
+                        <div class="search">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search for information..." />
+                        </div>
+                        <div class="profile">
+                            <a href="Signin.html">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="form-container" id="formSection">
+            <h2>CCA Feedback Form</h2>
+            <form id="feedbackForm" action="javascript:void(0);" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="schoolAdminNum">School Admin Number</label>
+                    <input type="text" id="schoolAdminNum" name="schoolAdminNum" required>
+                </div>
+                <div class="form-group">
+                    <label for="schoolEmail">School Email</label>
+                    <input type="email" id="schoolEmail" name="schoolEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="discipline">Which discipline are you from?</label>
+                    <select id="discipline" name="discipline" required>
+                        <option value="">Select a discipline</option>
+                        <option value="jumps">Jumps</option>
+                        <option value="sprints">Sprints</option>
+                        <option value="throws">Throws</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rate your experience (1-5)</label>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" class="star">★</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" class="star">★</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" class="star">★</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" class="star">★</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" class="star">★</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Any additional comments or suggestions?</label>
+                    <textarea id="comments" name="comments" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+            <div id="responseSection" style="display:none;">
+                <h3>Thank You for your Feedback!</h3>
+                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <p><strong>Name:</strong> <span id="responseName"></span></p>
+                <p><strong>School Admin Number:</strong> <span id="responseSchoolAdminNum"></span></p>
+                <p><strong>School Email:</strong> <span id="responseSchoolEmail"></span></p>
+                <p><strong>Discipline:</strong> <span id="responseDiscipline"></span></p>
+                <p><strong>Rating:</strong> <span id="responseRating"></span> stars</p>
+                <p><strong>Comments:</strong> <span id="responseComments"></span></p>
+                <button onclick="resetForm()" class="submit-btn">Back to Form</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const form = document.getElementById('feedbackForm');
+            const responseSection = document.getElementById('responseSection');
+            const formSection = document.getElementById('formSection').querySelector('form');
+
+            document.getElementById('responseName').textContent = form.name.value;
+            document.getElementById('responseSchoolAdminNum').textContent = form.schoolAdminNum.value;
+            document.getElementById('responseSchoolEmail').textContent = form.schoolEmail.value;
+            document.getElementById('responseDiscipline').textContent = form.discipline.options[form.discipline.selectedIndex].text;
+            document.getElementById('responseRating').textContent = form.rating.value;
+            document.getElementById('responseComments').textContent = form.comments.value || 'None';
+
+            formSection.style.display = 'none';
+            responseSection.style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('feedbackForm').reset();
+            document.getElementById('feedbackForm').style.display = 'block';
+            document.getElementById('responseSection').style.display = 'none';
+            document.getElementById('formSection').querySelector('h2').style.display = 'block';
+        }
+    </script>
