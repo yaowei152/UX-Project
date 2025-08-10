@@ -325,14 +325,13 @@ header {
   Shared Section Styles
   ========================================
 */
-/* UPDATED: Changed style to match the desired simpler look */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--dark-text); /* Changed from blue to dark gray/black */
-    margin-bottom: 40px; /* Adjusted margin */
-    text-transform: none; /* Removed uppercase styling */
+    color: var(--dark-text);
+    margin-bottom: 40px;
+    text-transform: none;
 }
 
 /*
@@ -490,6 +489,236 @@ header {
 
 /*
   ========================================
+  Achievements Timeline Section
+  ========================================
+*/
+.timeline-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--medium-gray);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item-content, .timeline-item-image {
+    width: calc(50% - 40px);
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 4px solid var(--primary-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 44, 156, 0.15);
+}
+
+.timeline-item-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+.timeline-item:not(.timeline-item-right) .timeline-item-content { order: 1; }
+.timeline-item:not(.timeline-item-right) .timeline-item-image { order: 2; }
+.timeline-item:not(.timeline-item-right) .timeline-item-content::before {
+    right: -15px;
+    border-left: 15px solid rgba(255, 255, 255, 0.9);
+}
+
+.timeline-item.timeline-item-right .timeline-item-content { order: 2; }
+.timeline-item.timeline-item-right .timeline-item-image { order: 1; }
+.timeline-item.timeline-item-right .timeline-item-content::before {
+    left: -15px;
+    border-right: 15px solid rgba(255, 255, 255, 0.9);
+}
+
+.timeline-date {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.timeline-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.timeline-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.timeline-item-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/*
+  ========================================
+  People in Charge Section (NEW)
+  ========================================
+*/
+.people-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 30px;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.person-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    overflow: hidden; /* Crucial for containing the overlay */
+    transition: all 0.4s ease;
+}
+
+.person-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 44, 156, 0.2);
+}
+
+.person-image-wrapper {
+    position: relative; /* Anchor for the overlay */
+    cursor: pointer;
+}
+
+.person-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.4s ease; /* Smooth transition for the blur effect */
+}
+
+.person-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 44, 156, 0.7); /* UPDATED: Made the overlay more transparent */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.4s ease;
+}
+
+.overlay-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.overlay-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- The Hover Magic --- */
+.person-image-wrapper:hover .person-overlay {
+    opacity: 1; /* Show the overlay on hover */
+}
+
+.person-image-wrapper:hover img {
+    filter: blur(4px); /* UPDATED: Softened the blur and removed the darkening effect */
+}
+
+.person-info {
+    padding: 25px 20px;
+}
+
+.person-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.person-role {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+
+/*
+  ========================================
   Testimonials Section
   ========================================
 */
@@ -522,7 +751,6 @@ header {
     box-shadow: 0 15px 35px rgba(0, 44, 156, 0.2);
 }
 
-/* Style for the new testimonial images */
 .testimonial-image {
     width: 80px;
     height: 80px;
@@ -547,165 +775,9 @@ header {
     font-style: italic;
 }
 
-/* Use these helper classes on your <img> tags to fine-tune the position */
-.testimonial-image.focal-point-top {
-    object-position: center top; /* Focuses on the very top of the image */
-}
-
-.testimonial-image.focal-point-bottom {
-    object-position: center bottom; /* Focuses on the bottom of the image */
-}
-
-.testimonial-image.focal-point-left {
-    object-position: left center; /* Focuses on the left side of the image */
-}
-
-/*
-  ========================================
-  Achievements Timeline Section
-  ========================================
-*/
-.timeline-section {
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 0 30px;
-    position: relative;
-}
-
-.timeline {
-    position: relative;
-    padding: 20px 0;
-}
-
-/* The vertical line running down the center */
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background-color: var(--medium-gray);
-    border-radius: 2px;
-}
-
-.timeline-item {
-    padding: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    opacity: 0; /* Initially hidden for animation */
-    transform: translateY(50px); /* Start slightly lower for animation */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* This class is added by JavaScript when the item is in view */
-.timeline-item.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.timeline-item-content, .timeline-item-image {
-    width: calc(50% - 40px); /* 50% width minus a gap */
-}
-
-/* The circle on the timeline */
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border: 4px solid var(--primary-color);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.timeline-item-content {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-item-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 44, 156, 0.15);
-}
-
-/* Arrow pointing towards the timeline */
-.timeline-item-content::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-}
-
-/* --- Logic for alternating sides --- */
-
-/* Left-aligned item (default) */
-.timeline-item:not(.timeline-item-right) .timeline-item-content {
-    order: 1; /* Text on the left */
-}
-.timeline-item:not(.timeline-item-right) .timeline-item-image {
-    order: 2; /* Image on the right */
-}
-.timeline-item:not(.timeline-item-right) .timeline-item-content::before {
-    right: -15px; /* Arrow on the right side of the content box */
-    border-left: 15px solid rgba(255, 255, 255, 0.9);
-}
-
-/* Right-aligned item */
-.timeline-item.timeline-item-right .timeline-item-content {
-    order: 2; /* Text on the right */
-}
-.timeline-item.timeline-item-right .timeline-item-image {
-    order: 1; /* Image on the left */
-}
-.timeline-item.timeline-item-right .timeline-item-content::before {
-    left: -15px; /* Arrow on the left side of the content box */
-    border-right: 15px solid rgba(255, 255, 255, 0.9);
-}
-
-.timeline-date {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.timeline-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.timeline-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
-}
-
-.timeline-item-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    display: block;
-}
-
+.testimonial-image.focal-point-top { object-position: center top; }
+.testimonial-image.focal-point-bottom { object-position: center bottom; }
+.testimonial-image.focal-point-left { object-position: left center; }
 
 /*
   ========================================
@@ -773,7 +845,6 @@ header {
     padding-left: 5px;
 }
 
-/* Moved from inline styles */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -855,7 +926,8 @@ header {
     }
 
     .training-grid,
-    .testimonials-grid {
+    .testimonials-grid,
+    .people-grid { /* Added people-grid for responsiveness */
         grid-template-columns: repeat(2, 1fr);
     }
     
@@ -865,43 +937,40 @@ header {
 }
 
 @media (max-width: 992px) {
-    /* Responsive timeline for tablets */
     .timeline::before {
-        left: 30px; /* Move line to the left */
+        left: 30px;
         transform: translateX(0);
     }
 
     .timeline-item {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
         align-items: flex-start;
     }
 
     .timeline-item-content, .timeline-item-image {
-        width: 100%; /* Take full width */
+        width: 100%;
     }
     
     .timeline-item-content {
-        order: 2 !important; /* Ensure content is always second */
-        margin-left: 45px; /* Space from the line */
+        order: 2 !important;
+        margin-left: 45px;
     }
     
     .timeline-item-image {
-        order: 1 !important; /* Ensure image is always first */
+        order: 1 !important;
         margin-left: 45px;
         margin-bottom: 20px;
     }
 
-    /* Hide the image on right-aligned items to prevent visual clutter */
     .timeline-item.timeline-item-right .timeline-item-image {
        display: none;
     }
     
     .timeline-item::after {
-        left: 30px; /* Align dot with the line */
+        left: 30px;
         transform: translateX(-50%);
     }
     
-    /* Always point arrow to the left */
     .timeline-item-content::before {
         left: -15px !important;
         right: auto !important;
@@ -923,7 +992,7 @@ header {
         width: 100%;
         justify-content: center;
         margin: 20px 0 15px;
-        order: 3; /* Push nav links below brand/right-nav */
+        order: 3;
     }
     
     .nav-right {
@@ -938,7 +1007,8 @@ header {
     .hero-content h2 { font-size: 2rem; }
     
     .training-grid,
-    .testimonials-grid {
+    .testimonials-grid,
+    .people-grid { /* Stack cards on smaller screens */
         grid-template-columns: 1fr;
     }
     
@@ -951,7 +1021,6 @@ header {
         font-size: 1.25rem;
     }
 
-    /* On mobile, hide all images in the timeline for a cleaner look */
     .timeline-item-image {
         display: none !important;
     }
@@ -969,7 +1038,7 @@ header {
         gap: 10px;
         align-items: center;
         margin-left: 0;
-        order: 0; /* Reset order */
+        order: 0;
         width: auto;
     }
 
@@ -1000,7 +1069,6 @@ header {
         justify-content: center;
     }
 
-    /* Further simplify timeline for small mobile */
     .timeline::before {
         left: 20px;
     }
@@ -1011,4 +1079,3 @@ header {
         left: 20px;
     }
 }
-
