@@ -1087,3 +1087,83 @@ header {
         left: 20px;
     }
 }
+/*
+  ========================================
+  Events Table Section (NEW)
+  ========================================
+*/
+.events-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 30px;
+}
+
+.table-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(5px);
+    overflow-x: auto; /* Makes table scroll on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+table thead th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table tbody td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--medium-gray);
+    color: var(--dark-text);
+    font-size: 1.1rem;
+}
+
+table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+table tbody tr:hover {
+    background-color: #e9eef5; /* A light blue-gray tint on hover */
+}
+
+/* Style the first and last header cells for rounded corners */
+table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+/* Style the last row to remove bottom border */
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status cell styling */
+.status-open {
+    color: #28a745;
+    font-weight: 600;
+}
+.status-upcoming {
+    color: #ffc107;
+    font-weight: 600;
+}
+.status-tbc {
+    color: #6c757d;
+    font-weight: 600;
+}
+
