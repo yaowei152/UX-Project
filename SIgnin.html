@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYP Sign in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/signin.css">
+</head>
+<body>
+    <div class="background-logo">
+        <img src="images/Athletics logo.png" alt="Athletics Logo" style="width:100%;height:auto;display:block;">
+    </div>
+    
+    <header>
+        <div class="sticky-header">
+            <div class="top-bar">
+                NANYANG | THE INNOVATIVE POLYTECHNIC
+            </div>
+            <nav class="navbar" id="mainNavbar">
+                <div class="navdiv">
+                    <div class="brand">
+                        <a href="Main.html">
+                            <img class="logo" src="images/NYP_Logo-removebg-preview.png" alt="NYP Logo">
+                        </a>
+                    </div>
+                    <ul class="nav_links">
+                        <li><a href="Main.html">Home</a></li>
+                        <li><a href="CCA.html">CCAs</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                    <div class="nav-right">
+                        <div class="search">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search for information..." />
+                        </div>
+                        <div class="profile">
+                            <a href="Signin.html">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+     <div class="container" id="step1">
+    <div class="logo">
+    </div>
+    <h1>Sign in</h1>
+    <p>to continue to NYP CCA</p>
+    <input type="text" id="email" placeholder="Admin Number" required>
+    <div class="links">
+      <a href="#">Create account</a>
+    </div>
+    <button class="btn" onclick="goToStep2()">Next</button>
+  </div>
+
+  <div class="container" id="step2" style="display: none;">
+    <div class="logo">
+    </div>
+    <span class="back-link" onclick="goBack()">← Back</span>
+    <h1>Enter password</h1>
+    <p id="userDisplay"></p>
+    <input type="password" id="password" placeholder="Password" required>
+    <div class="links">
+      <a href="#">Forgot password?</a>
+    </div>
+    <button class="btn" onclick="signIn()">Sign in</button>
+  </div>
+
+    
+
+
+
+    <script>
+    // Admin credentials
+    const adminEmail = "e"; 
+    const adminPassword = "e";
+
+    function goToStep2() {
+        const email = document.getElementById("email").value.trim();
+        if (email === "") {
+            alert("Please enter your admin number.");
+            return;
+        }
+        document.getElementById("userDisplay").innerText = email;
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+    }
+
+    function goBack() {
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step1").style.display = "block";
+    }
+
+    function signIn() {
+        const email = document.getElementById("userDisplay").innerText.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (email === adminEmail && password === adminPassword) {
+            // Redirect if credentials match
+            window.location.href = "Main.html";
+        } else {
+            alert("Invalid admin number or password.");
+        }
+    }
+  </script>
+</body>
+</html>
